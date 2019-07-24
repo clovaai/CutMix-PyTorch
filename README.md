@@ -1,4 +1,4 @@
-## CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features
+## [ICCV 2019] CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features
 
 Official Pytorch implementation of CutMix regularizer | [Paper](https://arxiv.org/abs/1905.04899) | [Pretrained Models](#experiments)
 
