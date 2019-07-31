@@ -142,11 +142,13 @@ ResNet50+**CutMix** | **21.60** | **46.25** | **54.81** | **77.6** | **76.7** | 
 
 ## Citation
 ```
-@article{CutMix,
-  title={CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features},
-  author={Yun, Sangdoo and Han, Dongyoon and Oh, Seong Joon and Chun, Sanghyuk and Choe, Junsuk and Yoo, Youngjoon},
-  journal={arXiv preprint arXiv:1905.04899},
-  year={2019}
+@inproceedings{yun2019cutmix,
+    title={CutMix: Regularization Strategy to Train Strong Classifiers with Localizable Features},
+    author={Yun, Sangdoo and Han, Dongyoon and Oh, Seong Joon and Chun, Sanghyuk and Choe, Junsuk and Yoo, Youngjoon},
+    booktitle = {International Conference on Computer Vision (ICCV)},
+    year={2019},
+    pubstate={published},
+    tppubtype={inproceedings}
 }
 ```
 
