@@ -123,6 +123,7 @@ ResNet-50 + Cutout [[arXiv'17](https://arxiv.org/abs/1708.04552)] | 22.93 | [mod
 ResNet-50 + AutoAugment [[CVPR'19](https://arxiv.org/abs/1805.09501)] | 22.40* | -
 ResNet-50 + DropBlock [[NeurIPS'18](https://arxiv.org/abs/1810.12890)] | 21.87* | -
 ResNet-101 + **Cutmix** | **20.17** | [model](https://www.dropbox.com/sh/1z4xnp9nwdmpzb5/AACQX4KU8XkTN0JSTfjkCktNa?dl=0)
+ResNeXt-101 (32x4d) + **Cutmix** | **19.47** | [model](https://www.dropbox.com/s/maysvgopsi17qi0/resnext_cutmix.pth.tar?dl=0)
 
 \* denotes results reported in the original papers
 
