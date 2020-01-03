@@ -73,7 +73,6 @@ def main():
     global args, best_err1, best_err5
     args = parser.parse_args()
 
-
     if args.dataset.startswith('cifar'):
         normalize = transforms.Normalize(mean=[x / 255.0 for x in [125.3, 123.0, 113.9]],
                                          std=[x / 255.0 for x in [63.0, 62.1, 66.7]])
@@ -175,9 +174,7 @@ def main():
                                 momentum=args.momentum,
                                 weight_decay=args.weight_decay, nesterov=True)
 
-
     cudnn.benchmark = True
-
 
     for epoch in range(0, args.epochs):
 
@@ -239,17 +236,12 @@ def train(train_loader, model, criterion, optimizer, epoch):
             # adjust lambda to exactly match pixel ratio
             lam = 1 - ((bbx2 - bbx1) * (bby2 - bby1) / (input.size()[-1] * input.size()[-2]))
             # compute output
-            input_var = torch.autograd.Variable(input, requires_grad=True)
-            target_a_var = torch.autograd.Variable(target_a)
-            target_b_var = torch.autograd.Variable(target_b)
-            output = model(input_var)
-            loss = criterion(output, target_a_var) * lam + criterion(output, target_b_var) * (1. - lam)
+            output = model(input)
+            loss = criterion(output, target_a) * lam + criterion(output, target_b) * (1. - lam)
         else:
             # compute output
-            input_var = torch.autograd.Variable(input, requires_grad=True)
-            target_var = torch.autograd.Variable(target)
-            output = model(input_var)
-            loss = criterion(output, target_var)
+            output = model(input)
+            loss = criterion(output, target)
 
         # measure accuracy and record loss
         err1, err5 = accuracy(output.data, target, topk=(1, 5))
@@ -316,10 +308,8 @@ def validate(val_loader, model, criterion, epoch):
     for i, (input, target) in enumerate(val_loader):
         target = target.cuda()
 
-        input_var = torch.autograd.Variable(input)
-        target_var = torch.autograd.Variable(target)
-        output = model(input_var)
-        loss = criterion(output, target_var)
+        output = model(input)
+        loss = criterion(output, target)
 
         # measure accuracy and record loss
         err1, err5 = accuracy(output.data, target, topk=(1, 5))
@@ -339,8 +329,8 @@ def validate(val_loader, model, criterion, epoch):
                   'Loss {loss.val:.4f} ({loss.avg:.4f})\t'
                   'Top 1-err {top1.val:.4f} ({top1.avg:.4f})\t'
                   'Top 5-err {top5.val:.4f} ({top5.avg:.4f})'.format(
-                   epoch, args.epochs, i, len(val_loader), batch_time=batch_time, loss=losses,
-                   top1=top1, top5=top5))
+                epoch, args.epochs, i, len(val_loader), batch_time=batch_time, loss=losses,
+                top1=top1, top5=top5))
 
     print('* Epoch: [{0}/{1}]\t Top 1-err {top1.avg:.3f}  Top 5-err {top5.avg:.3f}\t Test Loss {loss.avg:.3f}'.format(
         epoch, args.epochs, top1=top1, top5=top5, loss=losses))

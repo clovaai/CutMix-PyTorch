@@ -155,10 +155,8 @@ def validate(val_loader, model, criterion):
     for i, (input, target) in enumerate(val_loader):
         target = target.cuda()
 
-        input_var = torch.autograd.Variable(input)
-        target_var = torch.autograd.Variable(target)
-        output = model(input_var)
-        loss = criterion(output, target_var)
+        output = model(input)
+        loss = criterion(output, target)
 
         # measure accuracy and record loss
         err1, err5 = accuracy(output.data, target, topk=(1, 5))
