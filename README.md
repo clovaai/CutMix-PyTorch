@@ -137,9 +137,9 @@ ResNet50+Cutout | 22.93 | 46.69 | 52.78 | 76.8 | 75 | 24.0
 ResNet50+**CutMix** | **21.60** | **46.25** | **54.81** | **77.6** | **76.7** | **24.9**
 
 
-## Other Implementations (not official)
-- [Pytorch-CutMix](https://github.com/hysts/pytorch_cutmix) by hysts  
-
+## Third-party Implementations 
+- [Pytorch-CutMix](https://github.com/hysts/pytorch_cutmix) by @hysts
+- [TensorFlow-CutMix](https://github.com/jis478/Tensorflow/tree/master/TF2.0/Cutmix) by @jis478
 
 ## Citation
 ```
